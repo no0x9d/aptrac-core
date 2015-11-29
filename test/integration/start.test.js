@@ -40,7 +40,7 @@ describe('start command', function () {
 
     it('should end a current running task', function (done) {
         var now = moment();
-        var oldStart = moment().subtract(1, 'hour');
+        var oldStart = moment().subtract(1, 'hour').toDate();
         var name = 'mocha test';
 
         var options = {
