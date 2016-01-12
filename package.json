@@ -33,6 +33,5 @@
     "type": "git",
     "url": "https://github.com/no0x9d/aptrac-core.git"
   },
-  "preferGlobal": true,
   "private": true
 }
