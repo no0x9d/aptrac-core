@@ -15,7 +15,7 @@ describe('edit command', function () {
             project: project,
             db: null
         };
-        var aptrac = new Aptrac(options);
+        var aptrac = new Aptrac(options, { project: {type: String}});
         db = aptrac.db;
 
         db.insert({_id: 1, start: start}, function (err, newObj) {
@@ -46,7 +46,7 @@ describe('edit command', function () {
             db: null
         };
 
-        var aptrac = new Aptrac(options);
+        var aptrac = new Aptrac(options, { project: {type: String}});
         db = aptrac.db;
 
         db.insert({_id: 1, start: start, end: start}, function (err, newObj) {
@@ -104,7 +104,7 @@ describe('edit command', function () {
                 expect(newObj.start).to.eql(startTwo);
                 expect(newObj._id).to.eql(2);
 
-                aptrac.edit(options, function (err, context, tasks) {
+                aptrac.edit(options, function (err) {
                     expect(err).to.exist;
                     done()
                 })

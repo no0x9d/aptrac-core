@@ -16,7 +16,7 @@ describe('end command', function () {
                 db: null
         };
 
-        var aptrac = new Aptrac(options);
+        var aptrac = new Aptrac(options, { project: {type: String}});
         db = aptrac.db;
 
         db.insert({_id: 1, start: start}, function (err, newObj) {

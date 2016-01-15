@@ -2,7 +2,6 @@ var expect = require('chai').expect;
 var moment = require('moment');
 
 var Aptrac = require('../../lib/aptrac');
-
 describe('start command', function () {
     it('should create a new entry in db', function (done) {
         var now = moment();
@@ -13,7 +12,7 @@ describe('start command', function () {
             start: now,
             task: name
         };
-        var aptrac = new Aptrac(options);
+        var aptrac = new Aptrac(options, {task: {type: String}});
 
         aptrac.start(options, function (err, context, task) {
             expect(err).to.be.null;
@@ -32,7 +31,7 @@ describe('start command', function () {
             task: 'mocha test'
         };
 
-        aptrac.start(options, function (err, context, tasks) {
+        aptrac.start(options, function (err) {
             expect(err).to.not.be.null;
             done()
         });
@@ -58,7 +57,7 @@ describe('start command', function () {
             expect(newObj.start).to.eql(oldStart);
             expect(newObj.end).to.be.undefined;
 
-            aptrac.start(options, function (err, context, newTask) {
+            aptrac.start(options, function (err) {
                 if (err) done(err);
 
                 db.findOne({_id: id}, function (err, task) {
