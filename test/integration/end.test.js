@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var moment = require('moment');
 
-var Aptrac = require('../../lib/aptrac');
+var Aptrac = require('../../src/aptrac');
 
 describe('end command', function () {
     it('should end a current running task', function (done) {

@@ -2,7 +2,7 @@
   "name": "aptrac-core",
   "version": "0.9.0",
   "description": "the core for a customizable time tracking application",
-  "main": "./lib/aptrac.js",
+  "main": "./src/aptrac.js",
   "scripts": {
     "test": "mocha --recursive",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000 --recursive"

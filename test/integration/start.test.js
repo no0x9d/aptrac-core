@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var moment = require('moment');
 
-var Aptrac = require('../../lib/aptrac');
+var Aptrac = require('../../src/aptrac');
 describe('start command', function () {
     it('should create a new entry in db', function (done) {
         var now = moment();
