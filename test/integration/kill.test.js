@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var moment = require('moment');
 
-var Aptrac = require('../../src/aptrac');
+var Aptrac = require('../../lib/aptrac');
 
 describe('kill command', function () {
     it('should delete a task is id is a single value', function (done) {
