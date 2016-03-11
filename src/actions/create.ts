@@ -1,5 +1,5 @@
-var getCurrentId = require('../util/id-helper');
-module.exports = function (args, done) {
+import getCurrentId = require('../util/id-helper');
+export = function (args, done) {
     "use strict";
 
     var db = args.db;

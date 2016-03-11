@@ -1,17 +1,17 @@
-var baseCommand = require('./common/baseCommand'),
-    create      = require('../actions/create'),
-    edit        = require('../actions/edit'),
-    end         = require('../actions/end'),
-    findOne     = require('../actions/findOne'),
-    findById    = require('../actions/findById'),
-    findLast    = require('../actions/findLast');
+import baseCommand = require('./common/baseCommand');
+import create      = require('../actions/create');
+import edit        = require('../actions/edit');
+import end         = require('../actions/end');
+import findOne     = require('../actions/findOne');
+import findById    = require('../actions/findById');
+import findLast    = require('../actions/findLast');
 
-module.exports = function rerun(options, doneOutput) {
+export = function rerun(options, doneOutput) {
 
     var findMethod;
     if (options.id || (options.isContext && options.options.id)) {
         findMethod = findById;
-    } else{
+    } else {
         findMethod = findLast;
     }
 
@@ -25,12 +25,12 @@ module.exports = function rerun(options, doneOutput) {
                 note: task.note,
                 start: context.options.start
             };
-            done(null, context)
+            done(null, context);
         },
         end,
         create,
         edit,
         findOne
     ];
-    baseCommand.call(this, options, actions, doneOutput)
+    baseCommand.call(this, options, actions, doneOutput);
 };

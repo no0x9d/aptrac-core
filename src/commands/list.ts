@@ -1,10 +1,10 @@
-var deserialize      = require('../util/deserialize'),
-    end              = require('../actions/end'),
-    moment           = require('moment'),
-    queryBuilder     = require('./common/queryBuilder'),
-    preHandleOptions = require('./common/prehandleOptions');
+import deserialize      = require('../util/deserialize');
+import end              = require('../actions/end');
+import moment           = require('moment');
+import queryBuilder     = require('./common/queryBuilder');
+import preHandleOptions = require('./common/prehandleOptions');
 
-module.exports = function listTasks(options, output) {
+export = function listTasks(options, output) {
     "use strict";
     var context = preHandleOptions(options, this);
     var from, to;

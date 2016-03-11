@@ -1,12 +1,13 @@
-var baseCommand     = require('./common/baseCommand'),
-    edit            = require('../actions/edit'),
-    find            = require('../actions/find'),
-    generateChanges = require('../actions/generateChanges'),
-    queryBuilder    = require('./common/queryBuilder');
+import baseCommand     = require('./common/baseCommand');
+import edit            = require('../actions/edit');
+import find            = require('../actions/find');
+import generateChanges = require('../actions/generateChanges');
+import queryBuilder    = require('./common/queryBuilder');
 
-module.exports = function (options, doneOutput) {
+export = function (options, doneOutput) {
 
-    var query = options.id || (options.options && options.options.id) ? queryBuilder('findById') : queryBuilder('findCurrent');
+    var query = options.id || (options.options && options.options.id) ?
+        queryBuilder('findById') : queryBuilder('findCurrent');
 
     var actions = [
         generateChanges.fill(undefined, false),

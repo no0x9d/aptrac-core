@@ -22,4 +22,4 @@ function generateChanges(context, useDefaults, done) {
     done(null, context);
 }
 
-module.exports = generateChanges;
+export = generateChanges;

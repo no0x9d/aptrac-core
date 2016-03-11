@@ -1,7 +1,7 @@
 var defaultSchema = require('./defaultSchema'),
     Schema        = require('./schema');
 
-module.exports = {
+export = {
     schema: function(){
         var schema = new Schema();
         schema.extend(defaultSchema);

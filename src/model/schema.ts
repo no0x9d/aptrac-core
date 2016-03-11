@@ -23,11 +23,11 @@ Schema.prototype.extend = function (schema) {
                     label: prop.label,
                     queryable: prop.queryable,
                     required: prop.required
-                }
+                };
             }
 
         }
     }
 };
 
-module.exports = Schema;
+export = Schema;

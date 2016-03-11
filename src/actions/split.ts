@@ -1,6 +1,6 @@
 var getCurrentId = require('../util/id-helper');
 
-module.exports = function split(context, task, done) {
+export = function split(context, task, done) {
     var db = context.db;
     var options = context.options;
 

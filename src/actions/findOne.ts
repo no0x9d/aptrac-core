@@ -1,6 +1,6 @@
 var deserialize = require('../util/deserialize');
 
-module.exports = function findOne(args, search, done) {
+export = function findOne(args, search, done) {
     var db = args.db;
 
     // seatch for tasks with given search parameters

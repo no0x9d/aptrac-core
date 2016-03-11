@@ -1,7 +1,7 @@
-var baseCommand = require('./common/baseCommand'),
-    findCurrent = require('../actions/findCurrent');
+import baseCommand = require('./common/baseCommand');
+import findCurrent = require('../actions/findCurrent');
 
-module.exports = function now(options, doneOutput) {
+export = function now(options, doneOutput) {
     "use strict";
     var actions = [
         findCurrent

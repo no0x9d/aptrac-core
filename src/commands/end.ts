@@ -1,11 +1,11 @@
-var baseCommand     = require('./common/baseCommand'),
-    queryBuilder    = require('./common/queryBuilder'),
-    edit            = require('../actions/edit'),
-    end             = require('../actions/end'),
-    findOne         = require('../actions/findOne'),
-    generateChanges = require('../actions/generateChanges');
+import baseCommand     = require('./common/baseCommand');
+import queryBuilder    = require('./common/queryBuilder');
+import edit            = require('../actions/edit');
+import end             = require('../actions/end');
+import findOne         = require('../actions/findOne');
+import generateChanges = require('../actions/generateChanges');
 
-module.exports = function (options, doneOutput) {
+export = function (options, doneOutput) {
     "use strict";
 
     var task;
@@ -16,7 +16,7 @@ module.exports = function (options, doneOutput) {
         findOne,
         function checkForRunningTask(context, t, done) {
             if (t == null) {
-                return done(new Error('no running task to end'), context)
+                return done(new Error('no running task to end'), context);
             } else {
                 context.options.id = t._id;
                 done(null, context);
@@ -25,11 +25,11 @@ module.exports = function (options, doneOutput) {
         queryBuilder("findById"),
         edit,
         function mapArguments(context, query, done) { // map arguments for next function call
-            done(null, context)
+            done(null, context);
         },
         end,
         function queryForEndedTask(context, done) {
-            done(null, context, {_id: context.task._id})
+            done(null, context, {_id: context.task._id});
         },
         findOne
     ];

@@ -1,6 +1,6 @@
 var deserialize = require('../util/deserialize');
 
-module.exports = function findLast(args, done) {
+export = function findLast(args, done) {
     var db = args.db;
 
     // seatch for latest not running tasks

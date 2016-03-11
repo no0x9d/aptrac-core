@@ -1,4 +1,4 @@
-var moment = require('moment');
+import moment = require('moment');
 
 function Task(task) {
     if (!task) return;
@@ -23,6 +23,6 @@ Object.defineProperty(Task.prototype, "duration", {
     }
 );
 
-module.exports = function deserializeTask(task) {
+export = function deserializeTask(task) {
     return new Task(task);
 };

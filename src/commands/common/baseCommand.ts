@@ -1,7 +1,7 @@
-var async            = require('async'),
-    preHandleOptions = require('./prehandleOptions');
+import async            = require('async');
+import preHandleOptions = require('./prehandleOptions');
 
-module.exports = function baseCommand(options, asyncActions, callback) {
+export = function baseCommand(options, asyncActions, callback) {
     "use strict";
     var context = preHandleOptions(options, this);
 

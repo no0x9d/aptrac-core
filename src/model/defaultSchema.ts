@@ -1,4 +1,4 @@
-module.exports = {
+export = {
 
     "start":{
         type: Date,

@@ -1,20 +1,20 @@
 require('sugar');
 require('moment-duration-format');
 
-var startCommand  = require('./commands/start'),
-    editCommand   = require('./commands/edit'),
-    endCommand    = require('./commands/end'),
-    killCommand   = require('./commands/kill'),
-    returnCommand = require('./commands/return'),
-    listCommand   = require('./commands/list'),
-    nowCommand    = require('./commands/now'),
-    setCommand    = require('./commands/set'),
-    splitCommand  = require('./commands/split'),
-    unsetCommand  = require('./commands/unset'),
-    model         = require('./model'),
-    Config        = require('./config'),
-    initDb        = require('./util/init-db'),
-    path          = require('path');
+import startCommand  = require('./commands/start');
+import editCommand   = require('./commands/edit');
+import endCommand    = require('./commands/end');
+import killCommand   = require('./commands/kill');
+import returnCommand = require('./commands/return');
+import listCommand   = require('./commands/list');
+import nowCommand    = require('./commands/now');
+import setCommand    = require('./commands/set');
+import splitCommand  = require('./commands/split');
+import unsetCommand  = require('./commands/unset');
+import model         = require('./model');
+import Config        = require('./config');
+import initDb        = require('./util/init-db');
+import path          = require('path');
 
 function addConfigFile(config, options) {
     if (options && options.config) {
@@ -27,11 +27,11 @@ function Aptrac(options, schema) {
     "use strict";
 
     this.schema = model.schema();
-    if(schema){
+    if (schema) {
         this.schema.extend(schema);
     }
 
-    this.config = new Config();
+    this.config = Config();
     addConfigFile(this.config, options);
 
     this.db = initDb(options, this.config);
@@ -48,4 +48,4 @@ Aptrac.prototype.set = setCommand;
 Aptrac.prototype.split = splitCommand;
 Aptrac.prototype.unset = unsetCommand;
 
-module.exports = Aptrac;
+export = Aptrac;

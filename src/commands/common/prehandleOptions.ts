@@ -1,6 +1,6 @@
-var config = require('../../config');
+import config = require('../../config');
 
-module.exports = function preHandleOptions(options, aptrac) {
+export = function preHandleOptions(options, aptrac) {
     var context = generateContext(aptrac, options);
     handleAliases(context, options);
     return context;
@@ -22,7 +22,7 @@ function handleAliases(context, options) {
 
     var schema = context.schema;
     for (var fieldName in schema) {
-        if (!schema.hasOwnProperty(fieldName))continue;
+        if (!schema.hasOwnProperty(fieldName)) continue;
 
         var field = schema[fieldName];
         if (field.type === String) {

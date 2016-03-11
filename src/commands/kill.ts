@@ -1,6 +1,6 @@
-var preHandleOptions = require('./common/prehandleOptions');
+import preHandleOptions = require('./common/prehandleOptions');
 
-module.exports = function kill(options, callback) {
+export = function kill(options, callback) {
     var context = preHandleOptions(options, this);
     options = context.options;
 
@@ -12,5 +12,5 @@ module.exports = function kill(options, callback) {
 
     db.remove({_id: id}, {}, function (err, numRemoved) {
         callback(err, context, numRemoved);
-    })
+    });
 };

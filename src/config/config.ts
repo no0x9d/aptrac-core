@@ -3,7 +3,7 @@ require('sugar');
 
 jf.spaces = 4;
 
-module.exports = Config;
+export = Config;
 
 function Config() {
     "use strict";

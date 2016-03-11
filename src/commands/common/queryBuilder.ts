@@ -3,7 +3,7 @@ function queryById(id) {
     if (id) {
         if (Object.isArray(id)) {
             var queries = id.map(function (i) {
-                return {_id: i}
+                return {_id: i};
             });
             query = {$or: queries};
         } else {
@@ -13,7 +13,7 @@ function queryById(id) {
     return query;
 }
 
-function queryCurrent(){
+function queryCurrent() {
     return {end: {$exists: false}};
 }
 
@@ -26,10 +26,10 @@ function queryBuilder(queryType) {
             var id = context.options.id;
             query = queryById(id);
         }
-        done(null, context, query)
-    }
+        done(null, context, query);
+    };
 }
+queryBuilder.queryById = queryById;
+queryBuilder.queryCurrent = queryCurrent;
 
-module.exports = queryBuilder;
-module.exports.queryById = queryById;
-module.exports.queryCurrent = queryCurrent;
+export = queryBuilder;

@@ -1,5 +1,5 @@
-var find = require('./find');
-var moment = require('moment');
+import find = require('./find');
+import moment = require('moment');
 
 function OverlappingTaskError(message, task, conflictingTasks) {
     this.message = message;
@@ -9,7 +9,7 @@ function OverlappingTaskError(message, task, conflictingTasks) {
 OverlappingTaskError.prototype = Object.create(Error.prototype);
 OverlappingTaskError.prototype.name = "OverlappingTaskError";
 
-module.exports = function (context, query, done) {
+export = function (context, query, done) {
     "use strict";
 
     if (!done && Object.isFunction(query)) {

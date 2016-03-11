@@ -1,4 +1,4 @@
-module.exports = function endTask(context, done) {
+export = function endTask(context, done) {
     "use strict";
 
     var db      = context.db,

@@ -1,4 +1,4 @@
-module.exports = function getCurrentId(db, done) {
+export = function getCurrentId(db, done) {
     "use strict";
     db.find({})
         .sort({_id: -1})

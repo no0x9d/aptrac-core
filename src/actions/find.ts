@@ -1,6 +1,6 @@
-var deserialize = require('../util/deserialize');
+import deserialize = require('../util/deserialize');
 
-module.exports = function findTasks(context, query, done) {
+export = function findTasks(context, query, done) {
     var db = context.db;
     // search for tasks with given query parameters
     db.find(query, function (err, tasks) {
