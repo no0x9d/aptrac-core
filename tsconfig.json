@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "./lib",
+    "preserveConstEnums": true,
+    "removeComments": true
+  },
+  "filesGlob": [
+    "typings/main.d.ts",
+    "src/**/*.ts"
+  ],
+  "files": [
+    "typings/main.d.ts",
+    "src/actions/create.ts",
+    "src/actions/edit.ts",
+    "src/actions/end.ts",
+    "src/actions/find.ts",
+    "src/actions/findById.ts",
+    "src/actions/findCurrent.ts",
+    "src/actions/findLast.ts",
+    "src/actions/findOne.ts",
+    "src/actions/generateChanges.ts",
+    "src/actions/split.ts",
+    "src/aptrac.ts",
+    "src/commands/common/baseCommand.ts",
+    "src/commands/common/handleSetUnset.ts",
+    "src/commands/common/prehandleOptions.ts",
+    "src/commands/common/queryBuilder.ts",
+    "src/commands/edit.ts",
+    "src/commands/end.ts",
+    "src/commands/kill.ts",
+    "src/commands/list.ts",
+    "src/commands/now.ts",
+    "src/commands/return.ts",
+    "src/commands/set.ts",
+    "src/commands/split.ts",
+    "src/commands/start.ts",
+    "src/commands/unset.ts",
+    "src/config/config.ts",
+    "src/config/defaultConfig.ts",
+    "src/config/index.ts",
+    "src/model/defaultSchema.ts",
+    "src/model/index.ts",
+    "src/model/schema.ts",
+    "src/util/deserialize.ts",
+    "src/util/id-helper.ts",
+    "src/util/init-db.ts",
+    "src/util/moment-duration-clone.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}
