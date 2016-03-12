@@ -1,8 +1,8 @@
 import deserialize      = require('../util/deserialize');
 import end              = require('../actions/end');
-import moment           = require('moment');
-import queryBuilder     = require('./common/queryBuilder');
-import preHandleOptions = require('./common/prehandleOptions');
+import moment            = require('moment');
+import {queryBuilder, queryById} from './common/queryBuilder';
+import {preHandleOptions} from './common/prehandleOptions';
 
 export = function listTasks(options, output) {
     "use strict";
@@ -12,7 +12,7 @@ export = function listTasks(options, output) {
 
     // handle query by id
     if (context.options.id) {
-        query = queryBuilder.queryById(context.options.id);
+        query = queryById(context.options.id);
     } else { //handle time based queries
         // handle option flags and set 'from' & 'to'
 

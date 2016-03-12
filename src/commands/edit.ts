@@ -2,7 +2,7 @@ import baseCommand     = require('./common/baseCommand');
 import edit            = require('../actions/edit');
 import find            = require('../actions/find');
 import generateChanges = require('../actions/generateChanges');
-import queryBuilder    = require('./common/queryBuilder');
+import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
 

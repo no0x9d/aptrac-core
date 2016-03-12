@@ -1,5 +1,5 @@
-var moment = require('moment');
+import moment = require('moment');
 
-moment.duration.fn.clone = function(){
+moment.duration.prototype.clone = function(){
     return moment.duration(this);
 };

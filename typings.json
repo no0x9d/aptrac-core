@@ -2,6 +2,7 @@
   "ambientDependencies": {
     "async": "registry:dt/async#1.4.2+20160215162030",
     "moment": "registry:dt/moment#2.8.0+20150810140021",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160311085853",
     "node": "registry:dt/node#4.0.0+20160226132328",
     "sugar": "registry:dt/sugar#1.3.9+20160210124833"
   }

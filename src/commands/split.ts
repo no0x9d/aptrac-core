@@ -4,7 +4,7 @@ import find            = require('../actions/find');
 import findOne         = require('../actions/findOne');
 import generateChanges = require('../actions/generateChanges');
 import split           = require('../actions/split');
-import queryBuilder    = require('./common/queryBuilder');
+import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
 

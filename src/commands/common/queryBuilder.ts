@@ -1,4 +1,4 @@
-function queryById(id) {
+export function queryById(id) {
     var query;
     if (id) {
         if (Object.isArray(id)) {
@@ -13,12 +13,12 @@ function queryById(id) {
     return query;
 }
 
-function queryCurrent() {
+export function queryCurrent() {
     return {end: {$exists: false}};
 }
 
-function queryBuilder(queryType) {
-    return function (context, done) {
+export function queryBuilder (queryType: string) {
+    return function (context, done: Function) {
         var query;
         if (queryType === 'findCurrent') {
             query = queryCurrent();
@@ -29,7 +29,3 @@ function queryBuilder(queryType) {
         done(null, context, query);
     };
 }
-queryBuilder.queryById = queryById;
-queryBuilder.queryCurrent = queryCurrent;
-
-export = queryBuilder;

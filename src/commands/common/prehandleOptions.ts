@@ -1,28 +1,38 @@
 import config = require('../../config');
 
-export = function preHandleOptions(options, aptrac) {
+export interface Context {
+    options: any;
+    config: any;
+    schema: any;
+    db: any;
+}
+
+export function preHandleOptions(options, aptrac): Context {
     var context = generateContext(aptrac, options);
     handleAliases(context, options);
     return context;
-};
+}
 
-function generateContext(aptrac, options) {
-    "use strict";
-    var context = {};
-    context.options = options;
-    context.config = aptrac.config;
-    context.schema = aptrac.schema;
-    context.db = aptrac.db;
-    return context;
+function generateContext(aptrac, options): Context {
+    return {
+        options,
+        config: aptrac.config,
+        schema: aptrac.schema,
+        db: aptrac.db
+    };
 }
 
 function handleAliases(context, options) {
     var aliases = context.config.get('alias');
-    if (!aliases) return;
+    if (!aliases) {
+        return;
+    }
 
     var schema = context.schema;
     for (var fieldName in schema) {
-        if (!schema.hasOwnProperty(fieldName)) continue;
+        if (!schema.hasOwnProperty(fieldName)) {
+            continue;
+        }
 
         var field = schema[fieldName];
         if (field.type === String) {

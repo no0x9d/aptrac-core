@@ -1,4 +1,4 @@
-import preHandleOptions = require('./common/prehandleOptions');
+import {preHandleOptions} from './common/prehandleOptions';
 
 export = function kill(options, callback) {
     var context = preHandleOptions(options, this);

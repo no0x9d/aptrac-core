@@ -1,4 +1,4 @@
-import preHandleOptions = require('./prehandleOptions');
+import {preHandleOptions} from './prehandleOptions';
 
 export = function handleSetUnset(options, method, output) {
     "use strict";

@@ -1,9 +1,9 @@
 import baseCommand     = require('./common/baseCommand');
-import queryBuilder    = require('./common/queryBuilder');
 import edit            = require('../actions/edit');
 import end             = require('../actions/end');
 import findOne         = require('../actions/findOne');
 import generateChanges = require('../actions/generateChanges');
+import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
     "use strict";
