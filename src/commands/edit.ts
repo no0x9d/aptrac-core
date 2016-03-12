@@ -6,15 +6,15 @@ import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
 
-    var query = options.id || (options.options && options.options.id) ?
-        queryBuilder('findById') : queryBuilder('findCurrent');
+  var query = options.id || (options.options && options.options.id) ?
+    queryBuilder('findById') : queryBuilder('findCurrent');
 
-    var actions = [
-        generateChanges.fill(undefined, false),
-        query,
-        edit,
-        find
-    ];
+  var actions = [
+    generateChanges.fill(undefined, false),
+    query,
+    edit,
+    find
+  ];
 
-    baseCommand.call(this, options, actions, doneOutput);
+  baseCommand.call(this, options, actions, doneOutput);
 };

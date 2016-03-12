@@ -8,20 +8,20 @@ import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
 
-    function isIdPresent(options) {
-        options = options || options;
-        return options.id || (options.options && options.options.id);
-    }
+  function isIdPresent(options) {
+    options = options || options;
+    return options.id || (options.options && options.options.id);
+  }
 
-    var query = isIdPresent(options) ? queryBuilder('findById') : queryBuilder('findCurrent');
+  var query = isIdPresent(options) ? queryBuilder('findById') : queryBuilder('findCurrent');
 
-    var actions = [
-        generateChanges.fill(undefined, false),
-        query,
-        findOne,
-        split,
-        find
-    ];
+  var actions = [
+    generateChanges.fill(undefined, false),
+    query,
+    findOne,
+    split,
+    find
+  ];
 
-    baseCommand.call(this, options, actions, doneOutput);
+  baseCommand.call(this, options, actions, doneOutput);
 };

@@ -17,24 +17,24 @@ import initDb        = require('./util/init-db');
 import path          = require('path');
 
 function addConfigFile(config, options) {
-    if (options && options.config) {
-        var configPath = path.join(config.get('home'), options.config + ".cfg");
-        config.addSource(configPath);
-    }
+  if (options && options.config) {
+    var configPath = path.join(config.get('home'), options.config + ".cfg");
+    config.addSource(configPath);
+  }
 }
 
 function Aptrac(options, schema) {
-    "use strict";
+  "use strict";
 
-    this.schema = model.schema();
-    if (schema) {
-        this.schema.extend(schema);
-    }
+  this.schema = model.schema();
+  if (schema) {
+    this.schema.extend(schema);
+  }
 
-    this.config = Config();
-    addConfigFile(this.config, options);
+  this.config = Config();
+  addConfigFile(this.config, options);
 
-    this.db = initDb(options, this.config);
+  this.db = initDb(options, this.config);
 }
 
 Aptrac.prototype.start = startCommand;

@@ -6,8 +6,8 @@ var db = path.join(home, 'tasks.db');
 
 
 export = {
-    userhome: osenv.home(),
-    home: home,
-    db: db,
-    workHours: 8
+  userhome: osenv.home(),
+  home: home,
+  db: db,
+  workHours: 8
 };

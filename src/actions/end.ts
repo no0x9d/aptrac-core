@@ -1,20 +1,20 @@
 export = function endTask(context, done) {
-    "use strict";
+  "use strict";
 
-    var db      = context.db,
-        options = context.changes;
+  var db      = context.db,
+      options = context.changes;
 
-    var endTime = options.end || options.start;
+  var endTime = options.end || options.start;
 
-    if (!endTime) {
-        return done(Error("can't end task. no end time given"));
+  if (!endTime) {
+    return done(Error("can't end task. no end time given"));
+  }
+
+  db.update({end: {$exists: false}}, {$set: {end: endTime.toDate()}}, function (err) {
+    if (err) {
+      done(err);
     }
 
-    db.update({end: {$exists: false}}, {$set: {end: endTime.toDate()}}, function (err) {
-        if (err) {
-            done(err);
-        }
-
-        done(null, context);
-    });
+    done(null, context);
+  });
 };
