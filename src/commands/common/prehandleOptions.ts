@@ -41,23 +41,24 @@ function handleAliases(context, options) {
                 if (Object.isString(optionValue)) {
                     if (optionValue.startsWith('\\')) {
                         options[fieldName] = optionValue.slice(1);
-                    }
-                    else {
+                    } else {
                         var alias = aliases[optionValue];
                         if (alias) {
                             options[fieldName] = alias;
                         } else {
                             // regex search and replace for alias with "{alias}" pattern
-                            options[fieldName] = optionValue.replace(/(?:([^\\]|^){(.+?)})/g, function (match, leadingChar, alias) {
-                                var aliase = aliases[alias];
-                                return aliase ? leadingChar + aliase : leadingChar;
-                            });
+                            options[fieldName] = optionValue.replace(/(?:([^\\]|^){(.+?)})/g,
+                                function (match, leadingChar, alias) {
+                                    var aliase = aliases[alias];
+                                    return aliase ? leadingChar + aliase : leadingChar;
+                                });
                             // unescape string with escaped aliases \{alias}
-                            options[fieldName] = options[fieldName].replace(/[^\\]{(.+?)}/g, function (match, escapedText) {
-                                console.log(escapedText);
-                                var aliase = aliases[escapedText];
-                                return aliase !== undefined ? aliase : '';
-                            });
+                            options[fieldName] = options[fieldName].replace(/[^\\]{(.+?)}/g,
+                                function (match, escapedText) {
+                                    console.log(escapedText);
+                                    var aliase = aliases[escapedText];
+                                    return aliase !== undefined ? aliase : '';
+                                });
                         }
                     }
                 }

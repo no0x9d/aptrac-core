@@ -11,7 +11,9 @@ export = function endTask(context, done) {
     }
 
     db.update({end: {$exists: false}}, {$set: {end: endTime.toDate()}}, function (err) {
-        if (err) done(err);
+        if (err) {
+            done(err);
+        }
 
         done(null, context);
     });

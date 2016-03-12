@@ -16,14 +16,16 @@ export = function (context, query, done) {
         done = query;
         return done(Error("no query for items to edit specified"));
     }
-    var db      = context.db,
+    var db = context.db,
         options = context.options,
         changes = Object.clone(context.changes);
 
     if (query) {
 
         find(context, query, function (err, context, tasks) {
-            if (err) return done(err);
+            if (err) {
+                return done(err);
+            }
 
             if (tasks.length === 0) {
                 return done(null, context, query);
@@ -32,7 +34,7 @@ export = function (context, query, done) {
 
             if (changes.start || changes.end) {
                 if (tasks.length > 1) {
-                    return done(Error("changing start or end is not allowed on multiple activities"))
+                    return done(Error("changing start or end is not allowed on multiple activities"));
                 }
 
                 var task = tasks[0];
@@ -50,7 +52,7 @@ export = function (context, query, done) {
                 startMoment = startMoment || task.start;
                 endMoment = endMoment || task.end || moment();
 
-                if(startMoment.isAfter(endMoment)){
+                if (startMoment.isAfter(endMoment)) {
                     return done(Error("start date is after end date"));
                 }
 
@@ -90,7 +92,7 @@ export = function (context, query, done) {
 
                     var completeOverlap = tasks.filter(function (t) {
                         return t.start.isBefore(startMoment) && t.end.isAfter(endMoment)
-                            || t.start.isAfter(startMoment) && t.end.isBefore(endMoment)
+                            || t.start.isAfter(startMoment) && t.end.isBefore(endMoment);
                     });
 
                     var startOverlap = tasks.filter(function (t) {
@@ -102,34 +104,32 @@ export = function (context, query, done) {
                     var conflictingTasks = completeOverlap.union(startOverlap).union(endOverlap);
 
                     if (completeOverlap.length > 0 || startOverlap.length > 1 || endOverlap.length > 1) {
-                        return done(new OverlappingTaskError("Fatal error while editing task! Can't apply changes", task, conflictingTasks))
+                        return done(new OverlappingTaskError("Fatal error while editing task! Can't apply changes", task, conflictingTasks));
                     }
 
                     if ((startOverlap.length === 1 || endOverlap.length === 1)) {
-                        if(!options.recursiveUpdate) {
-                            return done(new OverlappingTaskError("Error while editing task! Please update conflicting tasks first or use the --recursive-update (-U) flag.", task, conflictingTasks))
-                        }else{
-                            if(startOverlap.length === 1){
-                                db.update({_id: startOverlap[0]._id}, {$set: {end: startMoment.toDate()}})
+                        if (!options.recursiveUpdate) {
+                            return done(new OverlappingTaskError("Error while editing task! Please update conflicting tasks first or use the --recursive-update (-U) flag.", task, conflictingTasks));
+                        } else {
+                            if (startOverlap.length === 1) {
+                                db.update({_id: startOverlap[0]._id}, {$set: {end: startMoment.toDate()}});
                             }
-                            if(endOverlap.length === 1){
-                                db.update({_id: endOverlap[0]._id}, {$set: {start: endMoment.toDate()}})
+                            if (endOverlap.length === 1) {
+                                db.update({_id: endOverlap[0]._id}, {$set: {start: endMoment.toDate()}});
                             }
                         }
                     }
 
                     db.update(query, {$set: changes}, {multi: true}, function (err) {
                         done(err, context, query);
-                    })
-                })
+                    });
+                });
 
             } else {
                 db.update(query, {$set: changes}, {multi: true}, function (err) {
                     done(err, context, query);
-                })
+                });
             }
         });
-
     }
-
 };

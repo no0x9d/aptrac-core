@@ -25,7 +25,7 @@ Config.prototype.readJsonConfig = function (path) {
     "use strict";
     try {
         var config = jf.readFileSync(path) || {};
-    } catch (e){
+    } catch (e) {
         config = {};
     }
     this._externalConfig = config;
@@ -69,8 +69,8 @@ Config.prototype.unset = function (params) {
                 }
             } else if (Object.isArray(param)) {
                 param.forEach(function (key2) {
-                    delete this._externalConfig[key][key2]
-                }, this)
+                    delete this._externalConfig[key][key2];
+                }, this);
             }
         }
     }

@@ -8,10 +8,11 @@ var copyOptions = function (context, copyBase, useDefaults) {
 
     args = Object.keys(schema);
     args.forEach(function (option) {
-        if (options[option])
+        if (options[option]) {
             copyBase[option] = options[option];
-        else if (useDefaults && config.get(option))
+        } else if (useDefaults && config.get(option)) {
             copyBase[option] = config.get(option);
+        }
     });
 
     return copyBase;

@@ -1,5 +1,4 @@
 export = {
-
     "start":{
         type: Date,
         label: "start time",

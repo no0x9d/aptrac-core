@@ -8,7 +8,12 @@ import {queryBuilder} from './common/queryBuilder';
 
 export = function (options, doneOutput) {
 
-    var query = options.id || (options.options && options.options.id) ? queryBuilder('findById') : queryBuilder('findCurrent');
+    function isIdPresent(options) {
+        options = options || options;
+        return options.id || (options.options && options.options.id);
+    }
+
+    var query = isIdPresent(options) ? queryBuilder('findById') : queryBuilder('findCurrent');
 
     var actions = [
         generateChanges.fill(undefined, false),

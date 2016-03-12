@@ -1,16 +1,18 @@
 import moment = require('moment');
 
 function Task(task) {
-    if (!task) return;
+    if (!task) {
+        return;
+    }
 
     var x;
     for (x in task) {
         if (task.hasOwnProperty(x)) {
-            if (task[x] instanceof Date){
+            if (task[x] instanceof Date) {
                 this[x] = moment(task[x]);
-            }
-            else
+            } else {
                 this[x] = task[x];
+            }
         }
     }
 }

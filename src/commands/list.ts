@@ -40,7 +40,7 @@ export = function listTasks(options, output) {
         } else {
             from = options.from || from || moment().startOf('day');
             to = options.to || to || moment().endOf('day');
-            query = {$and: [{start: {$gt: from.toDate()}}, {start: {$lt: to.toDate()}}]}
+            query = {$and: [{start: {$gt: from.toDate()}}, {start: {$lt: to.toDate()}}]};
         }
     }
 
@@ -56,7 +56,7 @@ export = function listTasks(options, output) {
             if (this.schema[fieldname].queryable) {
                 var obj = {};
                 obj[fieldname] = {$regex: regex};
-                queryableArray.push(obj)
+                queryableArray.push(obj);
             }
         }, this);
 
