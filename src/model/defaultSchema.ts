@@ -1,4 +1,4 @@
-export = {
+export default {
   "start": {
     type: Date,
     label: "start time",

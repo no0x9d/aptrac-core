@@ -1,11 +1,11 @@
-import baseCommand     = require('./common/baseCommand');
-import edit            = require('../actions/edit');
-import end             = require('../actions/end');
-import findOne         = require('../actions/findOne');
-import generateChanges = require('../actions/generateChanges');
+import {baseCommand} from './common/baseCommand';
+import {editTask} from '../actions/edit';
+import {endTask} from '../actions/end';
+import {findOne} from '../actions/findOne';
+import {generateChanges} from '../actions/generateChanges';
 import {queryBuilder} from './common/queryBuilder';
 
-export = function (options, doneOutput) {
+export function end(options, doneOutput) {
   "use strict";
 
   var task;
@@ -23,15 +23,15 @@ export = function (options, doneOutput) {
       }
     },
     queryBuilder("findById"),
-    edit,
+    editTask,
     function mapArguments(context, query, done) { // map arguments for next function call
       done(null, context);
     },
-    end,
+    endTask,
     function queryForEndedTask(context, done) {
       done(null, context, {_id: context.task._id});
     },
     findOne
   ];
   baseCommand.call(this, options, actions, doneOutput);
-};
+}

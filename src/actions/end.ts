@@ -1,4 +1,4 @@
-export = function endTask(context, done) {
+export function endTask(context, done) {
   "use strict";
 
   var db      = context.db,
@@ -17,4 +17,4 @@ export = function endTask(context, done) {
 
     done(null, context);
   });
-};
+}

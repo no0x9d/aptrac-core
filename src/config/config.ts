@@ -1,11 +1,9 @@
+import 'sugar';
 var jf = require('jsonfile');
-require('sugar');
 
 jf.spaces = 4;
 
-export = Config;
-
-function Config() {
+export function Config() {
   "use strict";
   this.sources = [];
 }

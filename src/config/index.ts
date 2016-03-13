@@ -1,5 +1,5 @@
-var defaultConfig = require('./defaultConfig'),
-    Config        = require('./config');
+import defaultConfig from './defaultConfig';
+import {Config} from './config';
 
 export = function configFactory() {
   "use strict";

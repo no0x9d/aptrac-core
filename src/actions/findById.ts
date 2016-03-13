@@ -1,7 +1,7 @@
-import findOne = require('./findOne');
+import {findOne} from './findOne';
 
-export = function findById(args, done) {
+export function findById(args, done) {
   var search = {_id: args.options.id};
 
   findOne(args, search, done);
-};
+}

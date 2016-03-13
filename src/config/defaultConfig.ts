@@ -1,11 +1,11 @@
 var osenv = require('osenv');
-var path = require('path');
+import * as path from 'path';
 
 var home = path.join(osenv.home(), ".aptrac");
 var db = path.join(home, 'tasks.db');
 
 
-export = {
+export default {
   userhome: osenv.home(),
   home: home,
   db: db,

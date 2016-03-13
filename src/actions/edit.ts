@@ -1,7 +1,7 @@
-import find = require('./find');
+import {findTasks} from './find';
 import moment = require('moment');
 
-function OverlappingTaskError(message, task, conflictingTasks) {
+export function OverlappingTaskError(message, task, conflictingTasks) {
   this.message = message;
   this.task = task;
   this.conflictingTasks = conflictingTasks;
@@ -9,8 +9,7 @@ function OverlappingTaskError(message, task, conflictingTasks) {
 OverlappingTaskError.prototype = Object.create(Error.prototype);
 OverlappingTaskError.prototype.name = "OverlappingTaskError";
 
-export = function (context, query, done) {
-  "use strict";
+export function editTask(context, query, done) {
 
   if (!done && Object.isFunction(query)) {
     done = query;
@@ -22,7 +21,7 @@ export = function (context, query, done) {
 
   if (query) {
 
-    find(context, query, function (err, context, tasks) {
+    findTasks(context, query, function (err, context, tasks) {
       if (err) {
         return done(err);
       }
@@ -81,7 +80,7 @@ export = function (context, query, done) {
             queryEnd
           ]
         };
-        find(context, conflictQuery, function (err, context, tasks) {
+        findTasks(context, conflictQuery, function (err, context, tasks) {
           if (err) {
             return done(err);
           }
@@ -104,7 +103,8 @@ export = function (context, query, done) {
           var conflictingTasks = completeOverlap.union(startOverlap).union(endOverlap);
 
           if (completeOverlap.length > 0 || startOverlap.length > 1 || endOverlap.length > 1) {
-            return done(new OverlappingTaskError("Fatal error while editing task! Can't apply changes", task, conflictingTasks));
+            return done(new OverlappingTaskError("Fatal error while editing task! Can't apply changes",
+              task, conflictingTasks));
           }
 
           if ((startOverlap.length === 1 || endOverlap.length === 1)) {
@@ -132,4 +132,4 @@ export = function (context, query, done) {
       }
     });
   }
-};
+}

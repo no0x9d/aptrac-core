@@ -1,10 +1,9 @@
-import deserialize      = require('../util/deserialize');
-import end              = require('../actions/end');
+import {deserializeTask} from '../util/deserialize';
 import moment           = require('moment');
-import {queryBuilder, queryById} from './common/queryBuilder';
+import {queryById} from './common/queryBuilder';
 import {preHandleOptions} from './common/prehandleOptions';
 
-export = function listTasks(options, output) {
+export function listTasks(options, output) {
   "use strict";
   var context = preHandleOptions(options, this);
   var from, to;
@@ -72,11 +71,11 @@ export = function listTasks(options, output) {
       }
 
       tasks = tasks.map(function (task) {
-        return deserialize(task);
+        return deserializeTask(task);
       });
 
       // output
       output(null, context, tasks);
     });
-};
+}
 

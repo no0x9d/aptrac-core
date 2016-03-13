@@ -1,4 +1,4 @@
-export = function getCurrentId(db, done) {
+export function getCurrentId(db, done) {
   "use strict";
   db.find({})
     .sort({_id: -1})
@@ -21,4 +21,4 @@ export = function getCurrentId(db, done) {
     }
     done(null, id);
   });
-};
+}

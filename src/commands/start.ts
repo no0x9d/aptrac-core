@@ -1,11 +1,11 @@
-import baseCommand     = require('./common/baseCommand');
-import create          = require('../actions/create');
-import edit            = require('../actions/edit');
-import end             = require('../actions/end');
-import findOne         = require('../actions/findOne');
-import generateChanges = require('../actions/generateChanges');
+import {baseCommand} from './common/baseCommand';
+import {createTask} from '../actions/create';
+import {editTask} from '../actions/edit';
+import {endTask} from '../actions/end';
+import {findOne} from '../actions/findOne';
+import {generateChanges} from '../actions/generateChanges';
 
-export = function start(options, doneOutput) {
+export function start(options, doneOutput) {
   "use strict";
   if (!options.start && !(options.options && options.options.start)) {
     return doneOutput(Error("no start date provided"));
@@ -13,11 +13,11 @@ export = function start(options, doneOutput) {
 
   var actions = [
     generateChanges.fill(undefined, true),
-    end,
-    create,
-    edit,
+    endTask,
+    createTask,
+    editTask,
     findOne
   ];
 
   baseCommand.call(this, options, actions, doneOutput, true);
-};
+}

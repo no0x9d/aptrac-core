@@ -18,9 +18,8 @@ var copyOptions = function (context, copyBase, useDefaults) {
   return copyBase;
 };
 
-function generateChanges(context, useDefaults, done) {
+export function generateChanges(context, useDefaults, done) {
   context.changes = copyOptions(context, {}, useDefaults);
   done(null, context);
 }
 
-export = generateChanges;

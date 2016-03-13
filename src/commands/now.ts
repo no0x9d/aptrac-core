@@ -1,11 +1,11 @@
-import baseCommand = require('./common/baseCommand');
-import findCurrent = require('../actions/findCurrent');
+import {baseCommand} from './common/baseCommand';
+import {findCurrentTask} from '../actions/findCurrent';
 
-export = function now(options, doneOutput) {
+export function now(options, doneOutput) {
   "use strict";
   var actions = [
-    findCurrent
+    findCurrentTask
   ];
 
   baseCommand.call(this, options, actions, doneOutput);
-};
+}

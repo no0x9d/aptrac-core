@@ -25,6 +25,6 @@ Object.defineProperty(Task.prototype, "duration", {
   }
 );
 
-export = function deserializeTask(task) {
+export function deserializeTask(task) {
   return new Task(task);
-};
+}

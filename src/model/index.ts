@@ -1,5 +1,5 @@
-var defaultSchema = require('./defaultSchema'),
-    Schema        = require('./schema');
+import defaultSchema from './defaultSchema';
+import {Schema} from './schema';
 
 export = {
   schema: function () {

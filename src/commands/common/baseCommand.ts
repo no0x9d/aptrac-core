@@ -1,8 +1,7 @@
-import async            = require('async');
+import * as async from 'async';
 import {preHandleOptions} from './prehandleOptions';
 
-export = function baseCommand(options, asyncActions: Array<Function>, callback) {
-  "use strict";
+export function baseCommand(options, asyncActions: Array<Function>, callback) {
   var context = preHandleOptions(options, this);
 
   // add our args function bound to the context as first action to
@@ -12,4 +11,4 @@ export = function baseCommand(options, asyncActions: Array<Function>, callback) 
   });
 
   async.waterfall(asyncActions, callback);
-};
+}

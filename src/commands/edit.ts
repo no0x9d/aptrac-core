@@ -1,10 +1,10 @@
-import baseCommand     = require('./common/baseCommand');
-import edit            = require('../actions/edit');
-import find            = require('../actions/find');
-import generateChanges = require('../actions/generateChanges');
+import {baseCommand} from './common/baseCommand';
+import {editTask} from '../actions/edit';
+import {findTasks} from '../actions/find';
+import {generateChanges} from '../actions/generateChanges';
 import {queryBuilder} from './common/queryBuilder';
 
-export = function (options, doneOutput) {
+export function edit(options, doneOutput) {
 
   var query = options.id || (options.options && options.options.id) ?
     queryBuilder('findById') : queryBuilder('findCurrent');
@@ -12,9 +12,9 @@ export = function (options, doneOutput) {
   var actions = [
     generateChanges.fill(undefined, false),
     query,
-    edit,
-    find
+    editTask,
+    findTasks
   ];
 
   baseCommand.call(this, options, actions, doneOutput);
-};
+}

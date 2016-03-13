@@ -1,6 +1,6 @@
 import {preHandleOptions} from './common/prehandleOptions';
 
-export = function kill(options, callback) {
+export function kill(options, callback) {
   var context = preHandleOptions(options, this);
   options = context.options;
 
@@ -14,4 +14,4 @@ export = function kill(options, callback) {
   db.remove({_id: id}, {}, function (err, numRemoved) {
     callback(err, context, numRemoved);
   });
-};
+}

@@ -1,10 +1,10 @@
-function Schema() {
+export function Schema() {
 }
 
 Schema.prototype.extend = function (schema) {
   function checkForValidType(type) {
     if (!type) {
-      throw new Error("Schema field definition must have a type:" + propName);
+      throw new Error("Schema field definition must have a type:" + propName); // TODO
     } else if (!(type === String || type === Date || type === Number || Boolean)) {
       throw new Error("Datatype" + type + " for field definition must have a type:" + propName);
     }
@@ -28,5 +28,3 @@ Schema.prototype.extend = function (schema) {
     }
   }
 };
-
-export = Schema;

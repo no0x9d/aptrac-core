@@ -1,6 +1,5 @@
-import getCurrentId = require('../util/id-helper');
-export = function (args, done) {
-  "use strict";
+import {getCurrentId} from '../util/id-helper';
+export function createTask(args, done) {
 
   var db = args.db;
 
@@ -18,5 +17,4 @@ export = function (args, done) {
       done(null, args, {_id: currentId + 1});
     });
   });
-
-};
+}

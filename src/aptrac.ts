@@ -1,20 +1,20 @@
-require('sugar');
-require('moment-duration-format');
+import 'sugar';
+import 'moment-duration-format';
 
-import startCommand  = require('./commands/start');
-import editCommand   = require('./commands/edit');
-import endCommand    = require('./commands/end');
-import killCommand   = require('./commands/kill');
-import returnCommand = require('./commands/return');
-import listCommand   = require('./commands/list');
-import nowCommand    = require('./commands/now');
-import setCommand    = require('./commands/set');
-import splitCommand  = require('./commands/split');
-import unsetCommand  = require('./commands/unset');
+import {start} from './commands/start';
+import {edit} from './commands/edit';
+import {end} from './commands/end';
+import {kill} from './commands/kill';
+import {rerun} from './commands/return';
+import {listTasks} from './commands/list';
+import {now} from './commands/now';
+import {set} from './commands/set';
+import {split} from './commands/split';
+import {unset} from './commands/unset';
 import model         = require('./model');
 import Config        = require('./config');
-import initDb        = require('./util/init-db');
-import path          = require('path');
+import {initDb} from './util/init-db';
+import * as path from 'path';
 
 function addConfigFile(config, options) {
   if (options && options.config) {
@@ -37,15 +37,15 @@ function Aptrac(options, schema) {
   this.db = initDb(options, this.config);
 }
 
-Aptrac.prototype.start = startCommand;
-Aptrac.prototype.edit = editCommand;
-Aptrac.prototype.end = endCommand;
-Aptrac.prototype.kill = killCommand;
-Aptrac.prototype.return = returnCommand;
-Aptrac.prototype.list = listCommand;
-Aptrac.prototype.now = nowCommand;
-Aptrac.prototype.set = setCommand;
-Aptrac.prototype.split = splitCommand;
-Aptrac.prototype.unset = unsetCommand;
+Aptrac.prototype.start = start;
+Aptrac.prototype.edit = edit;
+Aptrac.prototype.end = end;
+Aptrac.prototype.kill = kill;
+Aptrac.prototype.return = rerun;
+Aptrac.prototype.list = listTasks;
+Aptrac.prototype.now = now;
+Aptrac.prototype.set = set;
+Aptrac.prototype.split = split;
+Aptrac.prototype.unset = unset;
 
 export = Aptrac;

@@ -1,6 +1,6 @@
-var deserialize = require('../util/deserialize');
+import {deserializeTask} from'../util/deserialize';
 
-export = function findOne(args, search, done) {
+export function findOne(args, search, done) {
   var db = args.db;
 
   // seatch for tasks with given search parameters
@@ -12,10 +12,10 @@ export = function findOne(args, search, done) {
     var task;
     //found task must not be null
     if (result != null) {
-      task = deserialize(result);
+      task = deserializeTask(result);
     }
 
     args.task = task;
     done(null, args, task);
   });
-};
+}

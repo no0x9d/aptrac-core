@@ -1,12 +1,11 @@
-import baseCommand     = require('./common/baseCommand');
-import edit            = require('../actions/edit');
-import find            = require('../actions/find');
-import findOne         = require('../actions/findOne');
-import generateChanges = require('../actions/generateChanges');
-import split           = require('../actions/split');
+import {baseCommand} from './common/baseCommand';
+import {findTasks} from '../actions/find';
+import {findOne} from '../actions/findOne';
+import {generateChanges} from '../actions/generateChanges';
+import {splitTask} from '../actions/split';
 import {queryBuilder} from './common/queryBuilder';
 
-export = function (options, doneOutput) {
+export function split(options, doneOutput) {
 
   function isIdPresent(options) {
     options = options || options;
@@ -19,9 +18,9 @@ export = function (options, doneOutput) {
     generateChanges.fill(undefined, false),
     query,
     findOne,
-    split,
-    find
+    splitTask,
+    findTasks
   ];
 
   baseCommand.call(this, options, actions, doneOutput);
-};
+}

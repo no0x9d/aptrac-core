@@ -1,6 +1,6 @@
-import deserialize = require('../util/deserialize');
+import {deserializeTask} from '../util/deserialize';
 
-export = function findTasks(context, query, done) {
+export function findTasks(context, query, done) {
   var db = context.db;
   // search for tasks with given query parameters
   db.find(query, function (err, tasks) {
@@ -8,8 +8,8 @@ export = function findTasks(context, query, done) {
       done(err);
     }
     tasks = tasks.map(function (task) {
-      return deserialize(task);
+      return deserializeTask(task);
     });
     done(null, context, tasks);
   });
-};
+}
